@@ -6,8 +6,8 @@ function Users() {
         <div className="Main">
             <h1>USERS</h1>
             <ul>
-                <li><Link to='users/walles'>John Walles</Link></li>
-                <li><Link to='users/beanit'>Jim Beanit</Link></li>
+                <li><Link to='/users/walles'>John Walles</Link></li>
+                <li><Link to='/users/beanit'>Jim Beanit</Link></li>
             </ul>
         </div>
     )
