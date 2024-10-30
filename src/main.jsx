@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'; 
+import axios from 'axios';
 import ReactDOM from 'react-dom/client';
 import Header from './Pages/Header/Header';
 import Sidebar from './Pages/Sidebar/Sidebar';
@@ -58,3 +59,22 @@ function loader({params}) {
   
   return user[0];
 }
+
+
+// function loader({params}) {  
+
+
+//   let arr =
+//     axios
+//       .get("https://jsonplaceholder.typicode.com/users?_limit=5")
+//     .then(res => console.log(res.data));
+
+//   console.log(arr); 
+//    const user = usersData.filter(e => e.id === params.userId);
+
+  
+//   return user[0]; 
+    
+  
+
+// }
