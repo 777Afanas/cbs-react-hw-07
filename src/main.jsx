@@ -50,7 +50,8 @@ const router = createBrowserRouter(
       <Route path='about' element={<About />} />
       <Route path='users' element={<Users />} />
       <Route path='users/:userId' loader={loader} element={<UserPage />} errorElement={<ErrorPage/>} />
-      <Route path='*' element={<ErrorPage/>} />
+       {/* <Route path='users/:userId' element={<UserPage />} errorElement={<ErrorPage/>} /> */}
+      <Route path='*' element={<ErrorPage />} />
     </Route>
   )
 );
@@ -63,34 +64,29 @@ root.render(
 
 
 
-function loader({params}) {
+// function loader({params}) {
   
-  const user = usersData.filter(e => e.id === params.userId);
+//   const user = usersData.filter(e => e.id === params.userId);
   
-  return user[0];
-}
-
-
-
-// function loader({ params }) {
-
-// const searchWeather = ()=> {    
-//     axios.get("https://jsonplaceholder.typicode.com/users?_limit=5")
-//       .then((response) => {         
-//         (response.data);             
-//     })
-//   }
-
-//   console.log(users);
-// //     // axios
-// //     //   .get("https://jsonplaceholder.typicode.com/users?_limit=5")
-// //     // .then(res => res.data);
-
-// //   // console.log(arr); 
-// //   // console.log(usersData)
-//    const user = usersData.filter(e => e.id === params.userId);
-
-  
-//   return user[0]; 
-    
+//   return user[0];
 // }
+
+
+function loader({ params}) {
+
+ 
+  console.log(params.userId)
+  // function fetchUsers(userId) {
+  //   // return axios
+  //   //   .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+  //   //   .then(res => res.data);
+  //   return axios
+  //     .get(`https://jsonplaceholder.typicode.com/users`)
+  //     .then(res => res.data);
+      
+  // }
+  // const user = fetchUsers().filter(e => e.id === params.userId);
+//  console.log(user)
+  //  console.log(fetchUsers())
+   return true; 
+}
