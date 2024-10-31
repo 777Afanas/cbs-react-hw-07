@@ -1,5 +1,6 @@
 import React from 'react'; 
 import axios from 'axios';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './Pages/Header/Header';
 import Sidebar from './Pages/Sidebar/Sidebar';
@@ -7,6 +8,8 @@ import Welcome from './Pages/Welcome/Welcome';
 import './index.css';
 import About from './Pages/About/About';
 import Community from './Pages/Community/Community';
+import Installation from './Pages/Installation/Installation';
+import DescribingUI from './Pages/DescribingUI/DescribingUI';
 import Resources from './Pages/Resources/Resources'; 
 import StateHooks from './Pages/StateHookPage/StateHook';
 import ErrorPage from './Pages/Error/Error';
@@ -23,7 +26,9 @@ import {
 } from 'react-router-dom';
 
 
-const Root = () => {
+
+const Root = () => { 
+
   return (
     <div className='container'>        
       <Header />
@@ -38,7 +43,9 @@ const router = createBrowserRouter(
     <Route path='/' element={<Root />}>
       <Route index element={<Welcome />} />
       <Route path='statehooks' element={<StateHooks/>} />
-      <Route path='community' element={<Community/>} />
+      <Route path='community' element={<Community />} />
+      <Route path='installation' element={<Installation />} />
+      <Route path='describing' element={<DescribingUI />} />
       <Route path='resources' element={<Resources/>} />
       <Route path='about' element={<About />} />
       <Route path='users' element={<Users />} />
@@ -53,6 +60,9 @@ root.render(
    <RouterProvider router={router} />
 );
 
+
+
+
 function loader({params}) {
   
   const user = usersData.filter(e => e.id === params.userId);
@@ -61,20 +71,26 @@ function loader({params}) {
 }
 
 
-// function loader({params}) {  
 
+// function loader({ params }) {
 
-//   let arr =
-//     axios
-//       .get("https://jsonplaceholder.typicode.com/users?_limit=5")
-//     .then(res => console.log(res.data));
+// const searchWeather = ()=> {    
+//     axios.get("https://jsonplaceholder.typicode.com/users?_limit=5")
+//       .then((response) => {         
+//         (response.data);             
+//     })
+//   }
 
-//   console.log(arr); 
+//   console.log(users);
+// //     // axios
+// //     //   .get("https://jsonplaceholder.typicode.com/users?_limit=5")
+// //     // .then(res => res.data);
+
+// //   // console.log(arr); 
+// //   // console.log(usersData)
 //    const user = usersData.filter(e => e.id === params.userId);
 
   
 //   return user[0]; 
     
-  
-
 // }

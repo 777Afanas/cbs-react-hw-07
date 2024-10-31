@@ -13,6 +13,12 @@ function Sidebar() {
             <NavLink to="/community">Community</NavLink>
           </li>
           <li>
+            <NavLink to="/installation">Installation</NavLink>
+          </li>
+          <li>
+            <NavLink to="/describing">Describing the UI</NavLink>
+          </li>
+          <li>
             <NavLink to="/resources">Resources</NavLink>
           </li>
           <li>
