@@ -1,92 +1,74 @@
-import React from 'react'; 
-import axios from 'axios';
-import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import Header from './Pages/Header/Header';
-import Sidebar from './Pages/Sidebar/Sidebar';
-import Welcome from './Pages/Welcome/Welcome';
-import './index.css';
-import About from './Pages/About/About';
-import Community from './Pages/Community/Community';
-import Installation from './Pages/Installation/Installation';
-import DescribingUI from './Pages/DescribingUI/DescribingUI';
-import Resources from './Pages/Resources/Resources'; 
-import StateHooks from './Pages/StateHookPage/StateHook';
-import ErrorPage from './Pages/Error/Error';
-import Users from './Pages/Users/Users';
-import UserPage from './Pages/Users/UserPage';
-import usersData from './data/users.json';
+import React from "react";
+import axios from "axios";
+import ReactDOM from "react-dom/client";
+import Header from "./Pages/Header/Header";
+import Sidebar from "./Pages/Sidebar/Sidebar";
+import Welcome from "./Pages/Welcome/Welcome";
+import "./index.css";
+import About from "./Pages/About/About";
+import Community from "./Pages/Community/Community";
+import Installation from "./Pages/Installation/Installation";
+import DescribingUI from "./Pages/DescribingUI/DescribingUI";
+import Resources from "./Pages/Resources/Resources";
+import StateHooks from "./Pages/StateHookPage/StateHook";
+import ErrorPage from "./Pages/Error/Error";
+import Users from "./Pages/Users/Users";
+import UserPage from "./Pages/Users/UserPage";
+// import usersData from './data/users.json';
 
 import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Route,
-  Outlet
-} from 'react-router-dom';
+  Outlet,
+} from "react-router-dom";
 
-
-
-const Root = () => { 
-
+const Root = () => {
   return (
-    <div className='container'>        
+    <div className="container">
       <Header />
-      <Sidebar /> 
-      <Outlet/> 
+      <Sidebar />
+      <Outlet />
     </div>
   );
-}
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Root />}>
+    <Route path="/" element={<Root />}>
       <Route index element={<Welcome />} />
-      <Route path='statehooks' element={<StateHooks/>} />
-      <Route path='community' element={<Community />} />
-      <Route path='installation' element={<Installation />} />
-      <Route path='describing' element={<DescribingUI />} />
-      <Route path='resources' element={<Resources/>} />
-      <Route path='about' element={<About />} />
-      <Route path='users' element={<Users />} />
-      <Route path='users/:userId' loader={loader} element={<UserPage />} errorElement={<ErrorPage/>} />
-       {/* <Route path='users/:userId' element={<UserPage />} errorElement={<ErrorPage/>} /> */}
-      <Route path='*' element={<ErrorPage />} />
+      <Route path="statehooks" element={<StateHooks />} />
+      <Route path="community" element={<Community />} />
+      <Route path="installation" element={<Installation />} />
+      <Route path="describing" element={<DescribingUI />} />
+      <Route path="resources" element={<Resources />} />
+      <Route path="about" element={<About />} />
+      <Route path="users" element={<Users />} />
+      <Route
+        path="users/:userId"
+        loader={loader}
+        element={<UserPage />}
+        errorElement={<ErrorPage />}
+      />
+      <Route path="*" element={<ErrorPage />} />
     </Route>
   )
 );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-   <RouterProvider router={router} />
-);
-
-
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={router} />);
 
 // function loader({params}) {
-  
 //   const user = usersData.filter(e => e.id === params.userId);
-  
 //   return user[0];
 // }
 
-
-function loader({ params}) {
-
- 
-  console.log(params.userId)
-  // function fetchUsers(userId) {
-  //   // return axios
-  //   //   .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-  //   //   .then(res => res.data);
-  //   return axios
-  //     .get(`https://jsonplaceholder.typicode.com/users`)
-  //     .then(res => res.data);
-      
-  // }
-  // const user = fetchUsers().filter(e => e.id === params.userId);
-//  console.log(user)
-  //  console.log(fetchUsers())
-   return true; 
+async function loader({ params }) {
+  // console.log(params.userId); 
+  const user = await axios
+    .get(`https://jsonplaceholder.typicode.com/users/${params.userId}`)
+    .then((res) => res.data);
+  
+  return user;
 }

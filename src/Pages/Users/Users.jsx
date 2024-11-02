@@ -28,10 +28,12 @@ function Users() {
       <h2>USERS</h2>
       <ul>
         {users.map((user) => (
-          <li key={user.id}><Link to='/users/userId'>
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`}>
             <p>
               Name:  {user.name}
-            </p> </Link>            
+              </p>{' '}
+            </Link>            
           </li>
         ))}
       </ul>
